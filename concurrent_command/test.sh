@@ -31,21 +31,13 @@ if [ -f $err_log_file ]; then
    rm $err_log_file
 fi
 
-for (( i=1; i <= $run_times; ++i ))
+for (( j=1; j <= concurrent_process_num; ++j ))
 do
-   for (( j=1; j <= concurrent_process_num; ++j ))
-   do
-      echo "start process $j in turn $i"  
-      #bash -c "$command_str" &
-      ./call_command.sh $server_ip "$command_str" $j $i &
-   done
-
-   wait
-
-   if [ -s $err_log_file ]; then
-      break
-   fi
+   #bash -c "$command_str" &
+   ./call_command.sh $server_ip "$command_str" $j $run_times &
 done
+
+wait
 
 
 
