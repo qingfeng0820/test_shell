@@ -20,6 +20,17 @@ if [ -n "$4" ]; then
    command_str=$4
 fi
 
+err_log_file="err.txt"
+result_log_file="result.txt"
+
+if [ -f $result_log_file ]; then
+   rm $result_log_file
+fi
+
+if [ -f $err_log_file ]; then
+   rm $err_log_file
+fi
+
 for (( i=1; i <= $run_times; ++i ))
 do
    for (( j=1; j <= concurrent_process_num; ++j ))
@@ -30,6 +41,10 @@ do
    done
 
    wait
+
+   if [ -s $err_log_file ]; then
+      break
+   fi
 done
 
 
