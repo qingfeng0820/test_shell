@@ -1,5 +1,5 @@
 # test_shell
-Command performance test srcipts:
+# Command performance test srcipts
 
 concurrent_command/test.sh "your_command" process_num_in_parallel run_times
 
@@ -8,14 +8,14 @@ Default process_num_in_parallel is 10.
 Default run_times is 1.
 
 
-Example:
+# Example
 
 concurrent_command/test.sh "ls" 10 10
 
 It will run "ls" command with 10 processes in parallel, and each process will run the command for 10 times
 
 
-Results:
+# Results
 
 All results will be logged in perf.result.txt (If there is error occured, it will be logged in perf.err.log).
 
