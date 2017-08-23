@@ -1,26 +1,27 @@
 #!/bin/bash
-run_times=$4
+run_times=$3
+log_prefix="perf"
 for (( i=1; i <= $run_times; ++i ))
 do
-	echo "start process $3 in turn $i"
-	# echo "xxxxxxxxxxxxxx -s $1 $2 > $3_$i.txt"
-	echo "xxxxxxxxxxxxxx -s $1 $2 > $3.txt"
-	start_time=$(date +"%s")
-	# xxxxxxxxxxxxxx -s $1 $2 > $3_$i.txt
-	xxxxxxxxxxxxxx -s $1 $2 > $3.txt
+	echo "start process $2 in turn $i"
+	# echo "$1 => $log_prefix.$2_$i.txt"
+	echo "$1 > $log_prefix.$2.txt"
+	start_time=$(date +"%s.%3N")
+	# $1 > $log_prefix.$2_$i.txt
+	eval "$1 > $log_prefix.$2.txt"
 	ret=$?
-	end_time=$(date +"%s")
+	end_time=$(date +"%s.%3N")
 
-	start_time_str="`date -d @$start_time +%Y-%m-%dT%H:%M:%S`"
-	end_time_str="`date -d @$end_time +%Y-%m-%dT%H:%M:%S`"
-	elapse=$(expr $end_time - $start_time)
-	#echo "($3_$i) Start: $start_time_str, End: $end_time_str, Elapse: $elapse s, Return code: $ret" > $3_$i_result.txt
-	echo "($3_$i) Start: $start_time_str, End: $end_time_str, Elapse: $elapse s, Return code: $ret" >> result.txt
+	start_time_str="`date -d @$start_time +%Y-%m-%dT%H:%M:%S.%3N`"
+	end_time_str="`date -d @$end_time +%Y-%m-%dT%H:%M:%S.%3N`"
+	elapse=`echo "$end_time - $start_time" | bc -l`
+	#echo "($2_$i) Start: $start_time_str, End: $end_time_str, Elapse: $elapse s, Return code: $ret" > $log_prefix.$2_$i_result.txt
+	echo "($2_$i) Start: $start_time_str, End: $end_time_str, Elapse: $elapse s, Return code: $ret" >> $log_prefix.result.txt
 	if [ "$ret" != '0' ]; then
-	   echo "($3_$i) Start: $start_time_str, End: $end_time_str, Elapse: $elapse s, Return code: $ret" >> err.txt
+	   echo "($2_$i) Start: $start_time_str, End: $end_time_str, Elapse: $elapse s, Return code: $ret" >> $log_prefix.err.txt
 	   break
 	fi
-	if [ -s "err.txt" ]; then
+	if [ -s "$log_prefix.err.txt" ]; then
       break
     fi
 done
