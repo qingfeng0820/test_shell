@@ -23,5 +23,5 @@ The command response for each process will be logged as well.
 perf.1.txt for logging the response ffrom the first process.
 But the log for each process will only keep the response for the last time.
 
-All logs will be refreshed for each execution, so if you need the old test log, need back up them before kick off a new test.
+All logs will be refreshed for each execution, so if you need the old test log, need to back up them before kick off a new test.
 
