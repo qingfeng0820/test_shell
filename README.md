@@ -17,11 +17,11 @@ It will run "ls" command with 10 processes in parallel, and each process will ru
 
 Results:
 
-Results will be logged in perf.result.txt. 
+All results will be logged in perf.result.txt (If there is error occured, it will be logged in perf.err.log).
 
-If there is error occured, it will be logged in perf.err.log.
-
-perf.1.txt means the response from running the command in the first process (The log for each process will only keep the response for the last time) .
+The command response for each process will be logged as well. 
+perf.1.txt for logging the response ffrom the first process.
+But the log for each process will only keep the response for the last time.
 
 All logs will be refreshed for each execution.
 
