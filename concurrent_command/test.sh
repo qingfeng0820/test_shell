@@ -20,6 +20,7 @@ SCRIPTPATH=$(dirname "$0")
 log_prefix="perf"
 err_log_file="$log_prefix.err.txt"
 result_log_file="$log_prefix.result.txt"
+summary_log_file="$log_prefix.summary.txt"
 
 if [ -f $result_log_file ]; then
    rm $result_log_file
@@ -29,6 +30,10 @@ if [ -f $err_log_file ]; then
    rm $err_log_file
 fi
 
+if [ -f $summary_log_file ]; then
+   rm $summary_log_file
+fi
+
 for (( j=1; j <= concurrent_process_num; ++j ))
 do
    #bash -c "$command_str" &
@@ -36,6 +41,11 @@ do
 done
 
 wait
+
+if [ -f $result_log_file ]; then
+    $SCRIPTPATH/aggregate.awk $result_log_file  > $summary_log_file
+fi
+
 
 
 
