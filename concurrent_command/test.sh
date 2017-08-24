@@ -18,7 +18,7 @@ fi
 
 if [ -n "$4" ]; then
 	# if  [ [ "$4" == "0" ] || [ "$4" == "false" ] ]
-	if  [ "$4" == "0" ] || [ "${4,,}" == "false" ]
+	if  [ "$4" == "0" ] || [ "${4,,}" == "false" ]; then
 		error_occured_break="false"
 	fi
 fi

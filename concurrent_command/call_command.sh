@@ -21,13 +21,13 @@ do
 	echo "(Process-$2_$i) Start: $start_time_str, End: $end_time_str, Elapse: $elapse s, Return code: $ret" >> $log_prefix.result.txt
 	if [ "$ret" != '0' ]; then
 	   	echo "(Process-$2_$i) Start: $start_time_str, End: $end_time_str, Elapse: $elapse s, Return code: $ret" >> $log_prefix.err.txt
-	   	if [ $error_occured_break != "false" ]
-	    	break
+	   	if [ $error_occured_break != "false" ]; then
+	    		break
 	   	fi  
 	fi
 	if [ -s "$log_prefix.err.txt" ]; then
-		if [ $error_occured_break != "false" ]
-      		break
+		if [ $error_occured_break != "false" ]; then
+      			break
+		fi
       	fi	
-    fi
 done

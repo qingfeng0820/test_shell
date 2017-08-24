@@ -3,12 +3,13 @@
 
 # Usage
 
-./concurrent_command/test.sh "your_command" process_num_in_parallel run_times
+./concurrent_command/test.sh "your_command" process_num_in_parallel run_times error_occured_break
 
 Default process_num_in_parallel is 10.
 
 Default run_times is 1.
 
+Default error_occured_break is true (means test will be terminated if command failed)
 
 # Example
 
