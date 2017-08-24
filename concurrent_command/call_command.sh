@@ -1,6 +1,8 @@
 #!/bin/bash
 run_times=$3
+error_occured_break=$4
 log_prefix="perf"
+
 for (( i=1; i <= $run_times; ++i ))
 do
 	echo "start process $2 in turn $i"
@@ -18,10 +20,14 @@ do
 	#echo "(Process-$2_$i) Start: $start_time_str, End: $end_time_str, Elapse: $elapse s, Return code: $ret" > $log_prefix.$2_$i_result.txt
 	echo "(Process-$2_$i) Start: $start_time_str, End: $end_time_str, Elapse: $elapse s, Return code: $ret" >> $log_prefix.result.txt
 	if [ "$ret" != '0' ]; then
-	   echo "(Process-$2_$i) Start: $start_time_str, End: $end_time_str, Elapse: $elapse s, Return code: $ret" >> $log_prefix.err.txt
-	   break
+	   	echo "(Process-$2_$i) Start: $start_time_str, End: $end_time_str, Elapse: $elapse s, Return code: $ret" >> $log_prefix.err.txt
+	   	if [ $error_occured_break != "false" ]
+	    	break
+	   	fi  
 	fi
 	if [ -s "$log_prefix.err.txt" ]; then
-      break
+		if [ $error_occured_break != "false" ]
+      		break
+      	fi	
     fi
 done

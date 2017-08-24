@@ -2,6 +2,7 @@
 concurrent_process_num=10
 run_times=1
 command_str="ls"
+error_occured_break="true"
 
 if [ -n "$1" ]; then
    command_str=$1
@@ -13,6 +14,13 @@ fi
 
 if [ -n "$3" ]; then
    run_times=$3
+fi
+
+if [ -n "$4" ]; then
+	# if  [ [ "$4" == "0" ] || [ "$4" == "false" ] ]
+	if  [ "$4" == "0" ] || [ "${4,,}" == "false" ]
+		error_occured_break="false"
+	fi
 fi
 
 SCRIPTPATH=$(dirname "$0")
@@ -37,7 +45,7 @@ fi
 for (( j=1; j <= concurrent_process_num; ++j ))
 do
    #bash -c "$command_str" &
-   $SCRIPTPATH/call_command.sh "$command_str" $j $run_times &
+   $SCRIPTPATH/call_command.sh "$command_str" $j $run_times $error_occured_break &
 done
 
 wait
