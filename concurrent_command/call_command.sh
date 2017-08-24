@@ -1,7 +1,6 @@
 #!/bin/bash
 run_times=$3
 log_prefix="perf"
-total_elapse=0
 for (( i=1; i <= $run_times; ++i ))
 do
 	echo "start process $2 in turn $i"

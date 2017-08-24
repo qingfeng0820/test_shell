@@ -45,7 +45,3 @@ wait
 if [ -f $result_log_file ]; then
     $SCRIPTPATH/aggregate.awk $result_log_file  > $summary_log_file
 fi
-
-
-
-

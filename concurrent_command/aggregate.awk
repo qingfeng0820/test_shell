@@ -14,7 +14,6 @@ END {
         print "("x": Average Elapse "r[x] / c[x]
         totalR += r[x]
         totalC += c[x]
-    }
+    }	
     print "Total: Average Elapse "totalR / totalC
 }
-
