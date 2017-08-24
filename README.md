@@ -19,6 +19,8 @@ It will run "ls" command with 10 processes in parallel, and each process will ru
 
 All results will be logged in perf.result.txt (If there is error occured, it will be logged in perf.err.log).
 
+Average result for each run will be logged in perf.summary.txt.
+
 The command response for each process will be logged as well. 
 perf.1.txt for logging the response ffrom the first process.
 But the log for each process will only keep the response for the last time.
