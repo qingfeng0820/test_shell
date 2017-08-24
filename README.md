@@ -1,6 +1,11 @@
 # Command performance test srcipts
 
 
+# Prepare
+chmod +x concurrent_command/test.sh
+chmod +x concurrent_command/call_command.sh
+chmod +x concurrent_command/aggregate.awk
+
 # Usage
 
 ./concurrent_command/test.sh "your_command" process_num_in_parallel run_times error_occured_break
@@ -16,6 +21,9 @@ Default error_occured_break is true (means test will be terminated if command fa
 ./concurrent_command/test.sh "ls" 10 10
 
 It will run "ls" command with 10 processes in parallel, and each process will run the command for 10 times
+
+Can test http request via curl command:
+./concurrent_command/test.sh 'curl -X GET -k -L -b cookie.txt -H  "xxx:xxx" -u xxx:xxxxx https://xxxx' 10 10
 
 
 # Results
