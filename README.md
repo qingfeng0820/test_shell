@@ -3,7 +3,9 @@
 
 # Prepare
 chmod +x concurrent_command/test.sh
+
 chmod +x concurrent_command/call_command.sh
+
 chmod +x concurrent_command/aggregate.awk
 
 # Usage
