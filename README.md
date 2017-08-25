@@ -30,7 +30,7 @@ Can test http request via curl command:
 
 # Results
 
-All execution status results will be logged in perf.result.txt (If there is error occured, it will be logged in perf.err.log).
+All execution status results will be logged in perf.result.txt (If there is error occured, it will be logged in perf.err.log as well).
 
 The average result for each run will be logged in perf.summary.txt.
 
