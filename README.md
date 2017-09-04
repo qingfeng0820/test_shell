@@ -25,7 +25,7 @@ Default error_occured_break is true (means test will be terminated if command fa
 It will run "ls" command with 10 processes in parallel, and each process will run the command for 10 times
 
 Can test http request via curl command:
-./concurrent_command/test.sh 'curl -X GET -k -s -f -L -b cookie.txt -H  "xxx:xxx" -u xxx:xxxxx https://xxxx' 10 10
+./concurrent_command/test.sh 'curl -X GET -k -s -f -L -b cookie.txt -c cookie.txt -H  "xxx:xxx" -u xxx:xxxxx https://xxxx' 10 10
 
 
 # Results
